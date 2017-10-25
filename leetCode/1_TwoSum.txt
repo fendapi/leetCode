@@ -1,0 +1,25 @@
+/**
+向量 大小nums.size();放取数据等相关
+*/
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i;int j;
+        int size = nums.size();
+        int temptarget = 0;
+        vector<int> select;
+        for(i=0;i<=(size-1);i++)
+            for(j=i+1;j<=(size-1);j++)
+                if(j<=i)
+                    continue;
+                else{
+                    temptarget = nums[i]+nums[j];
+                    if(temptarget==target){
+                        select.push_back(i);
+                        select.push_back(j);
+                        return select;
+                    }
+                }
+        return select;
+    }
+};
