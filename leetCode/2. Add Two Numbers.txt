@@ -1,0 +1,53 @@
+/**
+ * 链表 指针相关
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *head1,*head2,*head3;
+        ListNode *l3 = new ListNode(0);
+        head1=l1;head2=l2;head3=l3;
+        int carry = 0;//记录进位
+        int p;int q;int sum;
+        
+        while(head1!=NULL || head2 !=NULL){
+            p= head1==NULL?0:head1->val;//
+            head1= head1==NULL?NULL:head1->next;
+            q= head2==NULL?0:head2->val;//
+            head2= head2==NULL?NULL:head2->next;
+            sum = p+q;//当前位 求和
+            
+            //有进位
+            if(carry){
+                carry = 0;
+                sum +=1;
+            }
+            
+            //求和+进位后 >10  需要进位
+            if(sum>=10){
+                sum -=10;
+                carry=1;
+            }
+            
+            //新建 节点
+            ListNode *temp = new ListNode(sum);
+            head3->next = temp;
+            head3=temp;
+            
+        }
+        
+        if(carry){
+            ListNode *temp = new ListNode(1);
+            head3->next = temp;
+            head3=temp;
+        }
+        
+        return l3->next;
+    }
+};

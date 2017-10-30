@@ -1,0 +1,67 @@
+/*
+ * 字符串截取：s.substr(start,length)
+ * 字符串长度：s.length()
+ * 判断为空  ：s.empty()
+ * 字符串转数组strcpy(buf, str.c_str());
+ * 数组转字符串string str = ch;
+ */
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int i,j;//i 起始 j长度
+        bool rst;
+        int length = s.length();//总长度
+        string substr;
+        int maxLength = 1;
+        int temp = 1;
+        
+        if(s.empty())
+            return 0;
+        
+        for(i=0;i<=length-2;i++)
+            for(j=2;j<=length-i;j++){                
+                //截取的字符串
+                substr = s.substr(i,j);
+                
+                temp = substr.length();
+                if(temp<=maxLength)
+                    continue;
+                
+                //检查是否有重
+                rst = hasRepeat(substr);
+                
+                //如果没重，获取长度，并与最长比较
+                if(!rst){
+                    temp = substr.length();
+                    if(temp>maxLength)
+                        maxLength = temp;
+                }else{
+                    //☆减少运行时间
+                    //如果有重，该层循环 已无效，即长度再长也没用了，该换起始了。
+                    break;
+                }
+            }
+        
+        return maxLength;
+    }
+    
+    bool hasRepeat(string s){
+        int m,n;
+        string chr;
+        
+        int length = s.length();
+        char arr[length+1];
+        strcpy(arr, s.c_str());
+        
+        for(m=0;m<=length;m++)
+            for(n=m+1;n<=length;n++){
+                if(m==n)
+                    continue;
+                
+                if(arr[m]==arr[n])
+                    return true;
+            }
+    
+        return false;
+    }
+};
