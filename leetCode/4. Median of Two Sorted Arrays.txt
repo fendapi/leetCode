@@ -1,0 +1,47 @@
+/*
+ * 中位数：奇数个就取中间那个，偶数个就中间两个求平均
+ */
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int nums1Size = nums1.size();
+        int nums2Size = nums2.size();
+        
+        int n=0,m=0,i=0;
+        
+        vector<int> nums3;
+        
+        //合并数组
+        while(n<=nums1Size-1 || m<=nums2Size-1){
+            //有一个数组数据取完了，则另一个数组全放进去，此处不知道有没有简化方法可用
+            if(n>=nums1Size){
+                nums3.push_back(nums2[m]);
+                m++;
+                continue;
+            }
+            if(m>=nums2Size){
+                nums3.push_back(nums1[n]);
+                n++;
+                continue;
+            }
+            
+            //依据大小依次放入
+            if(nums1[n] <= nums2[m]){
+                nums3.push_back(nums1[n]);
+                n++;
+            }else{
+                nums3.push_back(nums2[m]);
+                m++;
+            }
+        }
+        
+        int nums3Size = nums3.size();
+        
+        if(nums3Size%2==0){
+            //偶数
+            return (double)(nums3[nums3Size/2]+nums3[nums3Size/2-1])/2;
+        }else{
+            return (double)nums3[nums3Size/2];
+        }
+    }
+};
