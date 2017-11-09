@@ -1,0 +1,56 @@
+/*
+ * 求最长回文子串
+ * 中心扩展
+ * 字符串 获取某个位置的值 s.at(j)，从0开始
+ */
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int maxlength = 0;
+        int i,j,k,start;//i 起始 j长度
+        int length = s.length();//总长度
+        
+        //下面俩 长度貌似至少是2/3，abcda情况报错
+        if(length>0){
+            maxlength=1;
+            start=0;
+        }
+        
+        for(i=0;i<length;i++)//长度为奇数  
+        {  
+            //取i位置 前后一位
+            j=i-1;k=i+1;  
+            while(j>=0&&k<length&&s.at(j)==s.at(k))  
+            {  
+                //如果i位置左右相同 判断与当前记录的最长比较
+                if(k-j+1>maxlength)  
+                {  
+                    maxlength=k-j+1;  
+                    start=j; //记录开始位置 
+                }  
+                j--;  
+                k++;  
+            }  
+        }  
+  
+        for(int i=0;i<length;i++)//长度为偶数  
+        {  
+            int j=i,k=i+1;  
+            while(j>=0&&k<length&&s.at(j)==s.at(k))  
+            {  
+                if(k-j+1>maxlength)  
+                {  
+                    maxlength=k-j+1;  
+                    start=j;  
+                }  
+                j--;  
+                k++;  
+            }  
+        }  
+        
+        if(maxlength>0)  
+            return s.substr(start,maxlength);  
+        return NULL; 
+    }
+    
+};
