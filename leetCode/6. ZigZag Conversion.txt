@@ -1,0 +1,52 @@
+/*
+ * 锯齿形排列
+ * 字符串函数重温：
+ * 获取长度 s.size()
+ * 获取某位置 s.at(set)
+ * 某位置插入多少个字符 s.insert(SET,NUM,CHAR)
+ */
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        //按题解 顺序为 0 (2n-2) 2*(2n-2) ... 1 (2n-3)(2n-1)(4n-3)(4n-1)
+        int length = s.size();
+        int step=2*numRows-2;
+        int set=0;
+        string newstr;
+        
+        if(numRows==1)
+            return s;
+        
+        if(length>0)
+            newstr.insert(set++,1,s.at(0));
+        for(;set*step<length&&set*step>0;set++){
+                newstr.insert(set,1,s.at(set*step));
+        }
+        
+        int line=set;//第一行的个数
+        
+        
+        //numRows 表示会有几行。第0行上面已经好了
+        for(int i=1;i<numRows;i++){
+            //根据第一行 j*step-i<length 此条件针对ABCD 3的情况
+            for(int j=0;j*step-i<length;j++){
+                if(j==0){
+                    if(i<length)
+                        newstr.insert(set++,1,s.at(i));
+                }
+                else{
+                    if(((j*step-i)<length)&&((j*step-i)>((j-1)*step+i))){
+                        newstr.insert(set++,1,s.at(j*step-i));
+                    }
+                    if((j*step+i)<length){
+                        newstr.insert(set++,1,s.at(j*step+i));
+                    }
+                }
+                
+            }
+        }
+        
+        return newstr;
+            
+    }
+};

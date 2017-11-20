@@ -1,0 +1,30 @@
+/*
+ * 字符转数字
+ * str[i] 可以直接取字符串某位置的值
+ */
+class Solution {
+public:
+    int myAtoi(string str) {
+        if (str.empty()) return 0;
+        int sign = 1, base = 0, i = 0, n = str.size();
+        
+        //跳过所有空格
+        while (i < n && str[i] == ' ') 
+            ++i;
+        
+        //标记正负数
+        if (str[i] == '+' || str[i] == '-') {
+            sign = (str[i++] == '+') ? 1 : -1;
+        }
+        
+        //取到非数字或者字符串结束为止
+        while (i < n && str[i] >= '0' && str[i] <= '9') {
+            //ASCII值  str[i] - '0' > 7(?)
+            if (base > INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7)) {
+                return (sign == 1) ? INT_MAX : INT_MIN;
+            }
+            base = 10 * base + (str[i++] - '0');
+        }
+        return base * sign;
+    }
+};

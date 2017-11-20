@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int y=0;
+        int temp = x;
+        int n;
+        
+        //求回文数
+        while( temp != 0){
+            n = temp%10;
+            y = y*10 + n;
+            temp /= 10;
+        }
+        
+        //判断符号
+        y = x>0?y:0-y;
+        
+        if(x==y)
+            return true;
+        else
+            return false;
+    }
+};

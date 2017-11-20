@@ -1,0 +1,39 @@
+/*
+ * 不会。
+ * (?) INT_MAX/10 和INT_MIN/10 比较
+ */
+class Solution {
+public:
+    int reverse(int x) {
+        int y=0;
+        int n;
+        while( x != 0){
+            n = x%10;
+            if (y > INT_MAX/10 || y < INT_MIN/10){
+                return 0;
+            }
+            y = y*10 + n;
+            x /= 10;
+        }
+        return y;
+        /*
+        bool isNag = false;
+        signed long int y=0;
+        signed long int m=x;
+        if(0-x>0){
+            m=0-x;
+            isNag = true;//负数
+        }
+        cout<<m*10<<'|';
+        for(long int i=10;i<=10*m;i*=10){
+            int num = (m%i)/(i/10);//取余
+            cout<<num<<'|';
+            y = y*10+num;
+        }
+        
+        if(isNag)
+            y = 0-y;
+        
+        return y;*/
+    }
+};
