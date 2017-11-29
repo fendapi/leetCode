@@ -1,0 +1,32 @@
+/*
+ * 给定n个非负整数A1，A2，…，A，其中每一个表示坐标点（i，ai）。ai为y轴长度
+ * 绘制n个垂直线，使i行的两个端点位于（i，ai）和（i，0）。
+ * 找到两条线，连同x轴形成一个容器，使容器容纳最多的水。
+ */
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int size = height.size();
+        int i,j,min=0,contain=0;
+        
+        //首尾开始，两侧哪边小哪边往里缩
+        i=0;j=size-1;
+        while(i!=j){
+            min = height[j]>height[i]?height[i]:height[j];
+            contain = contain>min*(j-i)?contain:min*(j-i);
+            
+            height[j]>height[i]?i++:j--;
+        }
+        /*
+        for(i=0;i<size;i++){
+            for(j=i+1;j<size;j++)
+            {
+                min = height[j]>height[i]?height[i]:height[j];
+                contain = contain>min*(j-i)?contain:min*(j-i);
+            }
+        }
+        */
+        
+        return contain;
+    }
+};

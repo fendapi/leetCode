@@ -1,0 +1,45 @@
+class Solution {
+public:    
+    bool isMatch(string s, string p) {
+        return checkMatch(s,p,0,0);
+    }
+    
+    bool checkMatch(string s,string p,int i,int j)
+    {
+        if(j==p.size())  
+            return i==s.size();
+        
+        //字符后面一个不是*
+        if(p[j+1]!='*'){
+            if(p[j]=='.' || s[i]==p[j])
+                return checkMatch(s,p,i+1,j+1);
+            else
+                return false;
+        }
+        /*
+         //当前是p串最后第二个 或者 后一个不等于*的情况
+        if(j==p.size()-1 || p[j+1]!='*')  
+        {  
+            //长度不一致或者字符不相等   且当前不是.
+            if(i==s.size()|| s[i]!=p[j] && p[j]!='.')  
+                return false;  
+            else  
+                return helper(s,p,i+1,j+1);  
+        }
+        */
+        //后一个等于*的情况 xxx  x*xxx
+        // axxx  a*xxx  
+        while(i<s.size() && (p[j]=='.' || s[i]==p[j]))  
+        {  
+            //主串不动时 是否匹配 
+            if(checkMatch(s,p,i,j+2))  
+                return true;
+            
+            //反之，主串后移 类似对应 axxx c*xxxxx
+            i++;  
+        }
+        
+        //后一个等于* 且当前字符不一致，则子串移到*后面 类似对应 axxx c*xxxx 的情况
+        return checkMatch(s,p,i,j+2); 
+    }
+};
