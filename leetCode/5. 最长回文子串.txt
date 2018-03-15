@@ -1,39 +1,39 @@
-/*
- * «Û◊Ó≥§ªÿŒƒ◊”¥Æ
- * ÷––ƒ¿©’π
- * ◊÷∑˚¥Æ ªÒ»°ƒ≥∏ˆŒª÷√µƒ÷µ s.at(j)£¨¥”0ø™ º
+Ôªø/*
+ * Ê±ÇÊúÄÈïøÂõûÊñáÂ≠ê‰∏≤
+ * ‰∏≠ÂøÉÊâ©Â±ï
+ * Â≠óÁ¨¶‰∏≤ Ëé∑ÂèñÊüê‰∏™‰ΩçÁΩÆÁöÑÂÄº s.at(j)Ôºå‰ªé0ÂºÄÂßã
  */
 class Solution {
 public:
     string longestPalindrome(string s) {
         int maxlength = 0;
-        int i,j,k,start;//i ∆ º j≥§∂»
-        int length = s.length();//◊‹≥§∂»
+        int i,j,k,start;//i Ëµ∑Âßã jÈïøÂ∫¶
+        int length = s.length();//ÊÄªÈïøÂ∫¶
         
-        //œ¬√Ê¡© ≥§∂»√≤À∆÷¡…Ÿ «2/3£¨abcda«Èøˆ±®¥Ì
+        //‰∏ãÈù¢‰ø© ÈïøÂ∫¶Ë≤å‰ººËá≥Â∞ëÊòØ2/3ÔºåabcdaÊÉÖÂÜµÊä•Èîô
         if(length>0){
             maxlength=1;
             start=0;
         }
         
-        for(i=0;i<length;i++)//≥§∂»Œ™∆Ê ˝  
+        for(i=0;i<length;i++)//ÈïøÂ∫¶‰∏∫Â•áÊï∞  
         {  
-            //»°iŒª÷√ «∞∫Û“ªŒª
+            //Âèñi‰ΩçÁΩÆ ÂâçÂêé‰∏Ä‰Ωç
             j=i-1;k=i+1;  
             while(j>=0&&k<length&&s.at(j)==s.at(k))  
             {  
-                //»Áπ˚iŒª÷√◊Û”“œ‡Õ¨ ≈–∂œ”Îµ±«∞º«¬ºµƒ◊Ó≥§±»Ωœ
+                //Â¶ÇÊûúi‰ΩçÁΩÆÂ∑¶Âè≥Áõ∏Âêå Âà§Êñ≠‰∏éÂΩìÂâçËÆ∞ÂΩïÁöÑÊúÄÈïøÊØîËæÉ
                 if(k-j+1>maxlength)  
                 {  
                     maxlength=k-j+1;  
-                    start=j; //º«¬ºø™ ºŒª÷√ 
+                    start=j; //ËÆ∞ÂΩïÂºÄÂßã‰ΩçÁΩÆ 
                 }  
                 j--;  
                 k++;  
             }  
         }  
   
-        for(int i=0;i<length;i++)//≥§∂»Œ™≈º ˝  
+        for(int i=0;i<length;i++)//ÈïøÂ∫¶‰∏∫ÂÅ∂Êï∞  
         {  
             int j=i,k=i+1;  
             while(j>=0&&k<length&&s.at(j)==s.at(k))  

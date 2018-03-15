@@ -1,0 +1,56 @@
+﻿/*
+ *罗马字符串转数字
+ */
+class Solution {
+public:
+    int romanToInt(string s) {
+        //I（1）、X（10）、C（100）、M（1000）、V（5）、L（50）、D（500）
+        
+        //获取字符串长度
+        int i,current,prev,sum=0,sSize = s.size();
+        
+        //从最后开始，比较 当前和它前一位大小
+        for(i=sSize;i>0;i--){
+            current = getValue(s[i]);
+            prev = getValue(s[i-1]);
+            
+            //如果当前大于前一位，和减去前一位
+            if(current>prev){
+                //第一次 两位比较先算出和
+                if(i==sSize)
+                    sum = current-prev;
+                else
+                    sum -= prev;
+            }
+            //如果当前小于等于前一位，和加上前一位
+            else{
+                //第一次 两位比较先算出和
+                if(i==sSize)
+                    sum = prev-current;
+                else
+                    sum += prev;
+            }
+        }
+        
+        return sum;
+    }
+    
+    int getValue(char c){
+        if(c=='I')
+            return 1;
+        else if(c == 'X')
+            return 10;
+        else if(c == 'C')
+            return 100;
+        else if(c == 'M')
+            return 1000;
+        else if(c == 'V')
+            return 5;
+        else if(c == 'L')
+            return 50;
+        else if(c == 'D')
+            return 500;
+        else
+            return 0;
+    }
+};

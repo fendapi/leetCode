@@ -1,6 +1,6 @@
-/*
- * ²»»á¡£
- * (?) INT_MAX/10 ºÍINT_MIN/10 ±È½Ï
+ï»¿/*
+ * ä¸ä¼šã€‚
+ * (?) INT_MAX/10 å’ŒINT_MIN/10 æ¯”è¾ƒ
  */
 class Solution {
 public:
@@ -22,11 +22,11 @@ public:
         signed long int m=x;
         if(0-x>0){
             m=0-x;
-            isNag = true;//¸ºÊý
+            isNag = true;//è´Ÿæ•°
         }
         cout<<m*10<<'|';
         for(long int i=10;i<=10*m;i*=10){
-            int num = (m%i)/(i/10);//È¡Óà
+            int num = (m%i)/(i/10);//å–ä½™
             cout<<num<<'|';
             y = y*10+num;
         }

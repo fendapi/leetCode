@@ -1,5 +1,5 @@
-/**
- * Á´±í Ö¸ÕëÏà¹Ø
+ï»¿/**
+ * é“¾è¡¨ æŒ‡é’ˆç›¸å…³
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
@@ -13,7 +13,7 @@ public:
         ListNode *head1,*head2,*head3;
         ListNode *l3 = new ListNode(0);
         head1=l1;head2=l2;head3=l3;
-        int carry = 0;//¼ÇÂ¼½øÎ»
+        int carry = 0;//è®°å½•è¿›ä½
         int p;int q;int sum;
         
         while(head1!=NULL || head2 !=NULL){
@@ -21,21 +21,21 @@ public:
             head1= head1==NULL?NULL:head1->next;
             q= head2==NULL?0:head2->val;//
             head2= head2==NULL?NULL:head2->next;
-            sum = p+q;//µ±Ç°Î» ÇóºÍ
+            sum = p+q;//å½“å‰ä½ æ±‚å’Œ
             
-            //ÓÐ½øÎ»
+            //æœ‰è¿›ä½
             if(carry){
                 carry = 0;
                 sum +=1;
             }
             
-            //ÇóºÍ+½øÎ»ºó >10  ÐèÒª½øÎ»
+            //æ±‚å’Œ+è¿›ä½åŽ >10  éœ€è¦è¿›ä½
             if(sum>=10){
                 sum -=10;
                 carry=1;
             }
             
-            //ÐÂ½¨ ½Úµã
+            //æ–°å»º èŠ‚ç‚¹
             ListNode *temp = new ListNode(sum);
             head3->next = temp;
             head3=temp;

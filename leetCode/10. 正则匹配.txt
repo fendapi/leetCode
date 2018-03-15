@@ -1,4 +1,4 @@
-class Solution {
+ï»¿class Solution {
 public:    
     bool isMatch(string s, string p) {
         return checkMatch(s,p,0,0);
@@ -9,7 +9,7 @@ public:
         if(j==p.size())  
             return i==s.size();
         
-        //×Ö·ûºóÃæÒ»¸ö²»ÊÇ*
+        //å­—ç¬¦åé¢ä¸€ä¸ªä¸æ˜¯*
         if(p[j+1]!='*'){
             if(p[j]=='.' || s[i]==p[j])
                 return checkMatch(s,p,i+1,j+1);
@@ -17,29 +17,29 @@ public:
                 return false;
         }
         /*
-         //µ±Ç°ÊÇp´®×îºóµÚ¶ş¸ö »òÕß ºóÒ»¸ö²»µÈÓÚ*µÄÇé¿ö
+         //å½“å‰æ˜¯pä¸²æœ€åç¬¬äºŒä¸ª æˆ–è€… åä¸€ä¸ªä¸ç­‰äº*çš„æƒ…å†µ
         if(j==p.size()-1 || p[j+1]!='*')  
         {  
-            //³¤¶È²»Ò»ÖÂ»òÕß×Ö·û²»ÏàµÈ   ÇÒµ±Ç°²»ÊÇ.
+            //é•¿åº¦ä¸ä¸€è‡´æˆ–è€…å­—ç¬¦ä¸ç›¸ç­‰   ä¸”å½“å‰ä¸æ˜¯.
             if(i==s.size()|| s[i]!=p[j] && p[j]!='.')  
                 return false;  
             else  
                 return helper(s,p,i+1,j+1);  
         }
         */
-        //ºóÒ»¸öµÈÓÚ*µÄÇé¿ö xxx  x*xxx
+        //åä¸€ä¸ªç­‰äº*çš„æƒ…å†µ xxx  x*xxx
         // axxx  a*xxx  
         while(i<s.size() && (p[j]=='.' || s[i]==p[j]))  
         {  
-            //Ö÷´®²»¶¯Ê± ÊÇ·ñÆ¥Åä 
+            //ä¸»ä¸²ä¸åŠ¨æ—¶ æ˜¯å¦åŒ¹é… 
             if(checkMatch(s,p,i,j+2))  
                 return true;
             
-            //·´Ö®£¬Ö÷´®ºóÒÆ ÀàËÆ¶ÔÓ¦ axxx c*xxxxx
+            //åä¹‹ï¼Œä¸»ä¸²åç§» ç±»ä¼¼å¯¹åº” axxx c*xxxxx
             i++;  
         }
         
-        //ºóÒ»¸öµÈÓÚ* ÇÒµ±Ç°×Ö·û²»Ò»ÖÂ£¬Ôò×Ó´®ÒÆµ½*ºóÃæ ÀàËÆ¶ÔÓ¦ axxx c*xxxx µÄÇé¿ö
+        //åä¸€ä¸ªç­‰äº* ä¸”å½“å‰å­—ç¬¦ä¸ä¸€è‡´ï¼Œåˆ™å­ä¸²ç§»åˆ°*åé¢ ç±»ä¼¼å¯¹åº” axxx c*xxxx çš„æƒ…å†µ
         return checkMatch(s,p,i,j+2); 
     }
 };

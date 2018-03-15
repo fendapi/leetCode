@@ -1,16 +1,16 @@
-/*
- * ×Ö·û´®½ØÈ¡£ºs.substr(start,length)
- * ×Ö·û´®³¤¶È£ºs.length()
- * ÅĞ¶ÏÎª¿Õ  £ºs.empty()
- * ×Ö·û´®×ªÊı×éstrcpy(buf, str.c_str());
- * Êı×é×ª×Ö·û´®string str = ch;
+ï»¿/*
+ * å­—ç¬¦ä¸²æˆªå–ï¼šs.substr(start,length)
+ * å­—ç¬¦ä¸²é•¿åº¦ï¼šs.length()
+ * åˆ¤æ–­ä¸ºç©º  ï¼šs.empty()
+ * å­—ç¬¦ä¸²è½¬æ•°ç»„strcpy(buf, str.c_str());
+ * æ•°ç»„è½¬å­—ç¬¦ä¸²string str = ch;
  */
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int i,j;//i ÆğÊ¼ j³¤¶È
+        int i,j;//i èµ·å§‹ jé•¿åº¦
         bool rst;
-        int length = s.length();//×Ü³¤¶È
+        int length = s.length();//æ€»é•¿åº¦
         string substr;
         int maxLength = 1;
         int temp = 1;
@@ -20,24 +20,24 @@ public:
         
         for(i=0;i<=length-2;i++)
             for(j=2;j<=length-i;j++){                
-                //½ØÈ¡µÄ×Ö·û´®
+                //æˆªå–çš„å­—ç¬¦ä¸²
                 substr = s.substr(i,j);
                 
                 temp = substr.length();
                 if(temp<=maxLength)
                     continue;
                 
-                //¼ì²éÊÇ·ñÓĞÖØ
+                //æ£€æŸ¥æ˜¯å¦æœ‰é‡
                 rst = hasRepeat(substr);
                 
-                //Èç¹ûÃ»ÖØ£¬»ñÈ¡³¤¶È£¬²¢Óë×î³¤±È½Ï
+                //å¦‚æœæ²¡é‡ï¼Œè·å–é•¿åº¦ï¼Œå¹¶ä¸æœ€é•¿æ¯”è¾ƒ
                 if(!rst){
                     temp = substr.length();
                     if(temp>maxLength)
                         maxLength = temp;
                 }else{
-                    //¡î¼õÉÙÔËĞĞÊ±¼ä
-                    //Èç¹ûÓĞÖØ£¬¸Ã²ãÑ­»· ÒÑÎŞĞ§£¬¼´³¤¶ÈÔÙ³¤Ò²Ã»ÓÃÁË£¬¸Ã»»ÆğÊ¼ÁË¡£
+                    //â˜†å‡å°‘è¿è¡Œæ—¶é—´
+                    //å¦‚æœæœ‰é‡ï¼Œè¯¥å±‚å¾ªç¯ å·²æ— æ•ˆï¼Œå³é•¿åº¦å†é•¿ä¹Ÿæ²¡ç”¨äº†ï¼Œè¯¥æ¢èµ·å§‹äº†ã€‚
                     break;
                 }
             }

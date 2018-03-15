@@ -1,14 +1,14 @@
-/*
- * ¾â³İĞÎÅÅÁĞ
- * ×Ö·û´®º¯ÊıÖØÎÂ£º
- * »ñÈ¡³¤¶È s.size()
- * »ñÈ¡Ä³Î»ÖÃ s.at(set)
- * Ä³Î»ÖÃ²åÈë¶àÉÙ¸ö×Ö·û s.insert(SET,NUM,CHAR)
+ï»¿/*
+ * é”¯é½¿å½¢æ’åˆ—
+ * å­—ç¬¦ä¸²å‡½æ•°é‡æ¸©ï¼š
+ * è·å–é•¿åº¦ s.size()
+ * è·å–æŸä½ç½® s.at(set)
+ * æŸä½ç½®æ’å…¥å¤šå°‘ä¸ªå­—ç¬¦ s.insert(SET,NUM,CHAR)
  */
 class Solution {
 public:
     string convert(string s, int numRows) {
-        //°´Ìâ½â Ë³ĞòÎª 0 (2n-2) 2*(2n-2) ... 1 (2n-3)(2n-1)(4n-3)(4n-1)
+        //æŒ‰é¢˜è§£ é¡ºåºä¸º 0 (2n-2) 2*(2n-2) ... 1 (2n-3)(2n-1)(4n-3)(4n-1)
         int length = s.size();
         int step=2*numRows-2;
         int set=0;
@@ -23,12 +23,12 @@ public:
                 newstr.insert(set,1,s.at(set*step));
         }
         
-        int line=set;//µÚÒ»ĞĞµÄ¸öÊı
+        int line=set;//ç¬¬ä¸€è¡Œçš„ä¸ªæ•°
         
         
-        //numRows ±íÊ¾»áÓĞ¼¸ĞĞ¡£µÚ0ĞĞÉÏÃæÒÑ¾­ºÃÁË
+        //numRows è¡¨ç¤ºä¼šæœ‰å‡ è¡Œã€‚ç¬¬0è¡Œä¸Šé¢å·²ç»å¥½äº†
         for(int i=1;i<numRows;i++){
-            //¸ù¾İµÚÒ»ĞĞ j*step-i<length ´ËÌõ¼şÕë¶ÔABCD 3µÄÇé¿ö
+            //æ ¹æ®ç¬¬ä¸€è¡Œ j*step-i<length æ­¤æ¡ä»¶é’ˆå¯¹ABCD 3çš„æƒ…å†µ
             for(int j=0;j*step-i<length;j++){
                 if(j==0){
                     if(i<length)

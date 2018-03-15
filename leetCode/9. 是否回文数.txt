@@ -1,18 +1,18 @@
-class Solution {
+ï»¿class Solution {
 public:
     bool isPalindrome(int x) {
         int y=0;
         int temp = x;
         int n;
         
-        //Çó»ØÎÄÊý
+        //æ±‚å›žæ–‡æ•°
         while( temp != 0){
             n = temp%10;
             y = y*10 + n;
             temp /= 10;
         }
         
-        //ÅÐ¶Ï·ûºÅ
+        //åˆ¤æ–­ç¬¦å·
         y = x>0?y:0-y;
         
         if(x==y)
